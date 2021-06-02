@@ -1,0 +1,5 @@
+uvicorn~=0.13.4
+fastapi~=0.63.0
+httpx~=0.18.1
+pydantic~=1.8.1
+starlette~=0.13.6

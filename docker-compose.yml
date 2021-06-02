@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+ backend:
+  container_name: exerciser-api
+  build: .
+  command: python3 main.py
+  ports:
+    - "5006:5006"
+  expose:
+    - "5006"
+  links:
+    mongo
+ mongo:
+  image: mongo:latest
+  container_name: MONGO-API-BACKEND
+  ports:
+    - "27017:27017"
+  volumes:
+    - exerciser-data:/usr/share/exerciser/data
+
+volumes:
+  exerciser-data:
