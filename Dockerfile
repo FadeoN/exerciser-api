@@ -2,9 +2,9 @@ FROM python:3.7-slim
 
 COPY . /exerciser-api
 
-RUN python3 -m pip install -r requirements.txt
-
 WORKDIR /exerciser-api
+
+RUN python3 -m pip install -r requirements.txt
 
 ADD . /exerciser-api
 
