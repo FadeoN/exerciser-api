@@ -22,16 +22,15 @@ async def index_exercise_video_request(exerciseId: str, exerciseName: str, url: 
 
 
 async def count_video_exercise_repetition(exerciseId: str, width: int, height: int, frames: List[FrameKeypointDTO], index: str) -> VideoRepetitionResponse:
-    # async with httpx.AsyncClient() as client:
-    #
-    #     request = VideoSimilarityRequest(exerciseId=exerciseId,
-    #                                     width=width,
-    #                                      height=height,
-    #                                      frames=frames,
-    #                                      index=index)
-    #
-    #     endpoint = f"{APP_OPTIONS.video_embedding_api_options.url}/similarities/video"
-    #     response = await client.post(endpoint, data=request.json())
-    #
-    # return VideoRepetitionResponse.parse_raw(response.content)
-    return VideoRepetitionResponse(count=1)
+    async with httpx.AsyncClient(timeout=APP_OPTIONS.video_embedding_api_options.timeout) as client:
+    
+         request = VideoSimilarityRequest(exerciseId=exerciseId,
+                                         width=width,
+                                          height=height,
+                                          frames=frames,
+                                          index=index)
+    
+         endpoint = f"{APP_OPTIONS.video_embedding_api_options.url}/similarities/video"
+         response = await client.post(endpoint, data=request.json())
+    
+    return VideoRepetitionResponse.parse_raw(response.content)

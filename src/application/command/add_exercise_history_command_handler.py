@@ -26,11 +26,11 @@ async def handle(command: AddExerciseHistoryCommand) -> VideoRepetitionResponse:
     exerciseSet = exerciseWorkout.getExerciseSet(command.exerciseSetId)
     if exerciseSet is None:
         raise NotFoundException("exerciseSet.not.found")
-    response = await video_embedding_service.count_video_exercise_repetition(exerciseId=exerciseSet.exercise.id,
+    response = await video_embedding_service.count_video_exercise_repetition(exerciseId=str(exerciseSet.exercise.id),
                                                                    width=command.width,
                                                                    height=command.height,
                                                                    frames=command.frames,
-                                                                   index=exerciseSet.exercise.id)
+                                                                   index=str(exerciseSet.exercise.id))
 
     exerciseHistoryStatus = ExerciseHistoryStatus.getStatus(exerciseSet.repetitionCount, response.count)
 

@@ -1,7 +1,9 @@
 class VideoEmbeddingApiOptions(object):
     def __init__(self,
-                 url: str):
+                 url: str,
+                 timeout : int = 30000):
         self.url = url
+        self.timeout = timeout
 
 
 class SecurityOptions(object):
