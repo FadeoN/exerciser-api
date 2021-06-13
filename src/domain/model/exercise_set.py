@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import List
 
-from odmantic import EmbeddedModel, Reference, ObjectId
+from odmantic import EmbeddedModel, Reference, ObjectId 
 
 from src.domain.enum.days_of_week import DaysOfWeek
 from src.domain.enum.exercise_history_status import ExerciseHistoryStatus
@@ -25,6 +25,8 @@ class ExerciseSet(EmbeddedModel):
     creationDate: datetime = datetime.utcnow()
 
     def addExerciseHistory(self, status: ExerciseHistoryStatus, repetitionCount: int):
-        self.history.append(ExerciseHistory(status=status,
-                                            repetitionCount=repetitionCount))
+        self.history.append(ExerciseHistory(id=ObjectId(),
+                                            status=status,
+                                            repetitionCount=repetitionCount,
+                                            creationDate=datetime.utcnow()))
 

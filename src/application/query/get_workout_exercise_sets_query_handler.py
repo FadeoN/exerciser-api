@@ -3,6 +3,7 @@ from typing import List
 from odmantic import ObjectId
 from pydantic import BaseModel
 
+from src.application.exception.not_found_exception import NotFoundException
 from src.application.repository import repository
 from src.domain.model.exercise_set import ExerciseSet
 from src.domain.model.exercise_workout import ExerciseWorkout

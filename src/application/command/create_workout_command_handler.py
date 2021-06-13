@@ -21,4 +21,5 @@ async def handle(command: CreateExerciseWorkoutCommand):
                                       assigneeId=ObjectId(command.assigneeId),
                                       assignerId=ObjectId(command.assignerId),
                                       startDate=command.startDate,
-                                      endDate=command.endDate))
+                                      endDate=command.endDate,
+                                     creationDate=datetime.utcnow()))

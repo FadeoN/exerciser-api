@@ -3,6 +3,7 @@ from typing import List
 from odmantic import ObjectId
 from pydantic import BaseModel
 
+from src.application.exception.not_found_exception import NotFoundException
 from src.application.external import video_embedding_service
 from src.application.external.response.video_repetition_response import VideoRepetitionResponse
 from src.application.repository import repository

@@ -1,5 +1,3 @@
-import asyncio
-
 from motor.motor_asyncio import AsyncIOMotorClient
 from odmantic import AIOEngine
 
@@ -13,7 +11,7 @@ repository = Repostory()
 
 async def connect_db():
     """Create database connection."""
-    client = AsyncIOMotorClient("mongodb://localhost:27017/")
-    engine = AIOEngine(motor_client=client, database="testtt")
+    client = AsyncIOMotorClient("mongodb://165.22.67.71:27017/")
+    engine = AIOEngine(motor_client=client, database="exerciser")
     repository.engine = engine
 

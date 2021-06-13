@@ -3,10 +3,10 @@ from typing import List
 from odmantic import ObjectId
 from pydantic import BaseModel
 
+from src.application.exception.not_found_exception import NotFoundException
 from src.application.repository import repository
 from src.domain.enum.days_of_week import DaysOfWeek
 from src.domain.model.exercise import Exercise
-from src.domain.model.exercise_set import ExerciseSet
 from src.domain.model.exercise_workout import ExerciseWorkout
 
 
@@ -27,8 +27,8 @@ async def handle(command: AddExerciseSetCommand):
     if exercise is None:
         raise NotFoundException("exercise.not.found")
 
-    exerciseWorkout.addExerciseSet(ExerciseSet(setCount=command.setCount,
-                                               repetitionCount=command.repetitionCount,
-                                               recurrentDays=command.recurrentDays,
-                                               exercise=exercise))
+    exerciseWorkout.addExerciseSet(setCount=command.setCount,
+                                   repetitionCount=command.repetitionCount,
+                                   recurrentDays=command.recurrentDays,
+                                   exercise=exercise)
     await repository.engine.save(exerciseWorkout)

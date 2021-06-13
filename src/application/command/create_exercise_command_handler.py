@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pydantic import BaseModel
 
 from src.application.repository import repository
@@ -16,4 +18,5 @@ async def handle(command: CreateExerciseCommand):
     await repository.engine.save(Exercise(name=command.name,
                                difficulty=command.difficulty,
                                imageUrl=command.imageUrl,
-                               videoUrl=command.videoUrl))
+                               videoUrl=command.videoUrl,
+                               creationDate=datetime.utcnow()))

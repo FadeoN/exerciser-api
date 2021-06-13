@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+from src.application.exception.not_found_exception import NotFoundException
 from src.application.query.model.user_response import UserResponse
 from src.application.repository import repository
 from src.domain.model.user import User
